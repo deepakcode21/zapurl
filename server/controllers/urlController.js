@@ -8,7 +8,7 @@ export const shortenUrl = async (req, res) => {
   const newUrl = new Url({ longUrl, shortId });
   await newUrl.save();
 
-  res.json({ shortUrl: `https://zapurl-three.vercel.app/${shortId}` });
+  res.json({ shortUrl: `https://zapurl.onrender.com/${shortId}` });
 };
 
 export const redirectToLongUrl = async (req, res) => {
