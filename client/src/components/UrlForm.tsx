@@ -1,7 +1,16 @@
 import React, { useState, useEffect } from "react";
-import { 
-  Clipboard, Link, Loader2, QrCode, X, Zap, BarChart, 
-  ShieldCheck, Rocket, Smile, Users, Github  // Add GitHub icon here
+import {
+  Clipboard,
+  Link,
+  Loader2,
+  QrCode,
+  X,
+  Zap,
+  BarChart,
+  ShieldCheck,
+  Rocket,
+  Users,
+  Github, // Add GitHub icon here
 } from "lucide-react";
 import QRCode from "react-qr-code";
 
@@ -66,16 +75,16 @@ function UrlForm() {
 
       const data: ShortenResponse = await response.json();
       setShortUrl(data.shortUrl);
-      setStats(prev => ({ ...prev, totalUrls: prev.totalUrls + 1 }));
+      setStats((prev) => ({ ...prev, totalUrls: prev.totalUrls + 1 }));
 
       const newEntry: UrlHistory = {
         longUrl,
         shortUrl: data.shortUrl,
         timestamp: Date.now(),
-        clicks: 0
+        clicks: 0,
       };
 
-      setHistory(prev => [newEntry, ...prev.slice(0, 9)]);
+      setHistory((prev) => [newEntry, ...prev.slice(0, 9)]);
     } catch (error) {
       console.error("Error shortening URL:", error);
       setError("Failed to shorten URL. Please try again.");
@@ -122,17 +131,16 @@ function UrlForm() {
 
   return (
     <div className="min-h-screen ">
-  
-  {/* GitHub Banner */}
-  <a
-    href="https://github.com/deepakcode21/zapurl"  // Replace with your actual repo URL
-    target="_blank"
-    rel="noopener noreferrer"
-    className="fixed top-4 right-4 z-50 p-2 bg-black text-white rounded-full shadow-lg hover:bg-gray-800 transition-colors animate-bounce hover:animate-none"
-    aria-label="View source code on GitHub"
-  >
-    <Github className="h-6 w-6" />
-  </a>
+      {/* GitHub Banner */}
+      <a
+        href="https://github.com/deepakcode21/zapurl" // Replace with your actual repo URL
+        target="_blank"
+        rel="noopener noreferrer"
+        className="fixed top-4 right-4 z-50 p-2 bg-black text-white rounded-full shadow-lg hover:bg-gray-800 transition-colors animate-bounce hover:animate-none"
+        aria-label="View source code on GitHub"
+      >
+        <Github className="h-6 w-6" />
+      </a>
       {/* Hero Section */}
       <header className="pt-15 pb-8 text-center">
         <div className="max-w-4xl mx-auto px-4">
@@ -143,7 +151,8 @@ function UrlForm() {
             </h1>
           </div>
           <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
-            Transform long URLs into short, memorable links and gain powerful insights into your audience
+            Transform long URLs into short, memorable links and gain powerful
+            insights into your audience
           </p>
         </div>
       </header>
@@ -151,22 +160,24 @@ function UrlForm() {
       {/* Stats Section */}
       <div className="py-4">
         <div className="max-w-6xl mx-auto px-4  grid grid-cols-2 md:grid-cols-4 gap-8">
-          <div className="text-center bg-white rounded-md shadow shadow-[0_9px_0_rgb(0,0,0)] hover:shadow-[0_4px_0px_rgb(0,0,0)] text-black  ease-out hover:translate-y-1 transition-all  p-4">
+          <div className="text-center bg-white rounded-md shadow-[0_9px_0_rgb(0,0,0)] hover:shadow-[0_4px_0px_rgb(0,0,0)] text-black  ease-out hover:translate-y-1 transition-all  p-4">
             <BarChart className="h-8 w-8 text-blue-600  mx-auto mb-2" />
-            <div className="text-3xl font-bold text-gray-900">{stats.totalUrls}+</div>
+            <div className="text-3xl font-bold text-gray-900">
+              {stats.totalUrls}+
+            </div>
             <div className="text-gray-500">Links Created</div>
           </div>
-           <div className="text-center bg-white rounded-md shadow shadow-[0_9px_0_rgb(0,0,0)] hover:shadow-[0_4px_0px_rgb(0,0,0)] text-black  ease-out hover:translate-y-1 transition-all  p-4">
+          <div className="text-center bg-white rounded-md shadow-[0_9px_0_rgb(0,0,0)] hover:shadow-[0_4px_0px_rgb(0,0,0)] text-black  ease-out hover:translate-y-1 transition-all  p-4">
             <Rocket className="h-8 w-8 text-purple-600 mx-auto mb-2" />
             <div className="text-3xl font-bold text-gray-900">24/7</div>
             <div className="text-gray-500">Uptime</div>
           </div>
-           <div className="text-center bg-white rounded-md shadow shadow-[0_9px_0_rgb(0,0,0)] hover:shadow-[0_4px_0px_rgb(0,0,0)] text-black  ease-out hover:translate-y-1 transition-all  p-4">
+          <div className="text-center bg-white rounded-md shadow-[0_9px_0_rgb(0,0,0)] hover:shadow-[0_4px_0px_rgb(0,0,0)] text-black  ease-out hover:translate-y-1 transition-all  p-4">
             <ShieldCheck className="h-8 w-8 text-green-600 mx-auto mb-2" />
             <div className="text-3xl font-bold text-gray-900">100%</div>
             <div className="text-gray-500">Secure</div>
           </div>
-           <div className="text-center bg-white rounded-md shadow shadow-[0_9px_0_rgb(0,0,0)] hover:shadow-[0_4px_0px_rgb(0,0,0)] text-black  ease-out hover:translate-y-1 transition-all  p-4">
+          <div className="text-center bg-white rounded-md shadow-[0_9px_0_rgb(0,0,0)] hover:shadow-[0_4px_0px_rgb(0,0,0)] text-black  ease-out hover:translate-y-1 transition-all  p-4">
             <Users className="h-8 w-8 text-orange-600 mx-auto mb-2" />
             <div className="text-3xl font-bold text-gray-900">10K+</div>
             <div className="text-gray-500">Users</div>
@@ -290,7 +301,7 @@ function UrlForm() {
       </section>
 
       {/* Features Section */}
-     
+
       {/* History Section */}
       {history.length > 0 && (
         <section className="py-12">
@@ -354,9 +365,6 @@ function UrlForm() {
           </div>
         </section>
       )}
-
-      {/* Footer */}
-      
     </div>
   );
 }
